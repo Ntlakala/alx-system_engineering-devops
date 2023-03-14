@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "ibase=2; ${WATER}"+"ibase=2; ${STIR}" | bc | tr -d '\\' | xargs printf '%d\n' | awk '{ printf "%o\n", $0 }'
+echo $(echo "ibase=2; ${WATER}" | bc) $(echo "ibase=3; ${STIR}" | bc) | tr ' ' + | bc | tr -d '\' | xargs printf "ibase=10; obase=8; %d\n" | bc
